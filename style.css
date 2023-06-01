@@ -1,0 +1,129 @@
+body {
+    padding: 22px;
+    background-color: #ffffff;
+    color: #444444;
+    /* font-family: "Fira Sans"; */
+    font-family: "Open Sans";
+    font-size: 22px;
+    line-height: 34px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1100px;
+    text-size-adjust: none;
+}
+
+pre {
+    font-family: "Roboto";
+}
+
+
+strong {
+    font-weight: bold;
+}
+
+a:link {
+    color: #800000;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+blockquote {
+    color: #ecbe7b;
+}
+
+a {
+    color: #800000;
+    text-decoration: none;
+}
+
+
+a:hover {
+color: #0000EE;
+background-color: transparent;
+text-decoration: underline;
+}
+
+h1 {
+    font-size: 60px;
+    font-weight: 300;
+    color: #444444;
+    margin-bottom: 27px;
+}
+
+h2 {
+    font-size: 26px;
+    font-weight: 300;
+    color: #444444;
+    margin-bottom: 3px;
+}
+
+h3, h4, h5, h6 {
+    font-weight: 300;
+    font-size: 22px;
+    color: #444444;
+    margin-bottom: 3px;
+}
+
+li {
+    color: #444444;
+}
+
+li.nocolor {
+    color: #444444;
+}
+
+.subtitle {
+    font-size: 22px;
+    color: #444444;
+    margin-bottom: 3px;
+
+}
+
+a.heading {
+    color: #444444;
+}
+
+a.heading:hover {
+    text-decoration: none;
+}
+
+a.fake {
+    color: #444444;
+    text-decoration: none;
+}
+
+a.fake:hover {
+}
+
+#menu ul{
+  list-style: none;
+}
+#menu li{
+  display: inline;
+}
+
+.button {
+  background-color: #FFFFFF;
+  border: 1px solid black;
+  border-color: #000000;
+  color: #444444;
+  padding: 6px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 19px;
+}
+
+.button:hover {
+  background-color: #444444;
+  color: white;
+}
+
+.footer {
+    font-size: 15px;
+    color: #808080;
+}
+
+:lang(bn) {
+  font-family: 'Baloo Da 2', serif;
+}
