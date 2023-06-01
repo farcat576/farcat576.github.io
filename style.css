@@ -125,5 +125,9 @@ a.fake:hover {
 }
 
 :lang(bn) {
-  font-family: 'Baloo Da 2', serif;
+  font-family: 'Noto Serif Bengali', serif;
+}
+
+:lang(hi) {
+  font-family: 'Noto Serif Devanagari', serif;
 }
