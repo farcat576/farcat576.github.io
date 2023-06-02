@@ -1,7 +1,7 @@
 body {
     padding: 22px;
-    background-color: #ffffff;
-    color: #444444;
+    background-color: #444444;
+    color: #ffffff;
     /* font-family: "Fira Sans"; */
     font-family: "Open Sans";
     font-size: 22px;
@@ -46,41 +46,41 @@ text-decoration: underline;
 h1 {
     font-size: 60px;
     font-weight: 300;
-    color: #444444;
+    color: #ffffff;
     margin-bottom: 27px;
 }
 
 h2 {
     font-size: 26px;
     font-weight: 300;
-    color: #444444;
+    color: #ffffff;
     margin-bottom: 3px;
 }
 
 h3, h4, h5, h6 {
     font-weight: 300;
     font-size: 22px;
-    color: #444444;
+    color: #ffffff;
     margin-bottom: 3px;
 }
 
 li {
-    color: #444444;
+    color: #ffffff;
 }
 
 li.nocolor {
-    color: #444444;
+    color: #ffffff;
 }
 
 .subtitle {
     font-size: 22px;
-    color: #444444;
+    color: #ffffff;
     margin-bottom: 3px;
 
 }
 
 a.heading {
-    color: #444444;
+    color: #ffffff;
 }
 
 a.heading:hover {
@@ -88,7 +88,7 @@ a.heading:hover {
 }
 
 a.fake {
-    color: #444444;
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -103,10 +103,10 @@ a.fake:hover {
 }
 
 .button {
-  background-color: #FFFFFF;
+  background-color: #000000;
   border: 1px solid black;
-  border-color: #000000;
-  color: #444444;
+  border-color: #ffffff;
+  color: #ffffff;
   padding: 6px 16px;
   text-align: center;
   text-decoration: none;
@@ -115,7 +115,7 @@ a.fake:hover {
 }
 
 .button:hover {
-  background-color: #444444;
+  background-color: #ffffff;
   color: white;
 }
 
