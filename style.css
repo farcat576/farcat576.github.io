@@ -132,6 +132,44 @@ a.fake:hover {
   font-family: 'Noto Serif Devanagari', serif;
 }
 
+.navbar {
+  background-color: #000000;      
+  padding: 1rem 0;                 
+  text-align: center;              
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  display: inline-block;           
+  margin: 0 1.5rem;                
+}
+
+/* Links styling */
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+/* Hover effect */
+.nav-links a:hover {
+  color: #DC143C;                  
+}
+
+/* Active page highlight */
+.nav-links a.active {
+  color: #DC143C;
+  text-decoration: underline;
+}
+
 #hp  {
 float: right;    
  margin: 0 0 0 15px;
