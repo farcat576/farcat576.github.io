@@ -141,6 +141,8 @@ a.fake:hover {
 
 .nav-links {
   list-style: none;
+  justify-content: space-evenly;
+  align-items: center;
   margin: 0;
   padding: 0;
 }
