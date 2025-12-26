@@ -149,12 +149,6 @@ a.fake:hover {
   padding: 0;
 }
 
-.nav-links li {
-  display: inline-block;           
-  margin: 0 1.5rem;                
-}
-
-/* Links styling */
 .nav-links a {
   text-decoration: none;
   color: #DC143C;
@@ -163,12 +157,10 @@ a.fake:hover {
   transition: color 0.3s;
 }
 
-/* Hover effect */
 .nav-links a:hover {
   color: #B01033;                  
 }
 
-/* Active page highlight */
 .nav-links a.active {
   color: #B01033;
   text-decoration: underline;
