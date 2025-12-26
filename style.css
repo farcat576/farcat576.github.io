@@ -151,6 +151,7 @@ a.fake:hover {
 }
 
 .nav-links a {
+  list-style: none;
   text-decoration: none;
   color: #DC143C;
   font-weight: 600;
