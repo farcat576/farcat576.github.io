@@ -141,6 +141,12 @@ a.fake:hover {
   border-bottom: 1px solid #ddd;
 }
 
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
 .nav-links {
   display: flex;
   list-style: none;
