@@ -161,7 +161,10 @@ a.fake:hover {
   text-decoration: none;
   color: #DC143C;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  transition: color 0.3s;
+  display: inline-block;
   transition: color 0.3s;
 }
 
