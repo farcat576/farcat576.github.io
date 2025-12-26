@@ -134,13 +134,15 @@ a.fake:hover {
 
 .navbar {
   background-color: #000000;      
-  padding: 1rem 0;                 
+  padding: 1rem 0; 
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
   text-align: center;              
   border-bottom: 1px solid #ddd;
 }
 
 .nav-links {
-  list-style: none;
+  display: flex;
   justify-content: space-evenly;
   align-items: center;
   margin: 0;
