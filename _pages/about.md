@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: <a href='https://www.epfl.ch/en/'>EPFL</a>, Grad student in Computer Science
 
 profile:
   align: right
