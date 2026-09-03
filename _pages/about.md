@@ -6,7 +6,7 @@ subtitle: <a href='https://www.epfl.ch/en/'>EPFL</a>, Grad student in Computer S
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: DSCF0301.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
     <p>555 your office number</p>
