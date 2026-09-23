@@ -7,7 +7,7 @@ subtitle: Always tired
 profile:
   align: right
   image: DSCF0301.jpg
-  image_circular: true # crops the image to make it circular
+  image_circular: false # crops the image to make it circular
   more_info: >
     <p>Lausanne, Vaud, Switzerland </p>
 
@@ -25,7 +25,7 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Hello there! I am a Masters student in <a href='https://www.epfl.ch/en/'>EPFL</a>, studying Computer Science. My research interest broadly lie in Theoretical Computer Science, with a special focus on Complexity Theory and Graph Algorithms.
+Hello there! I am a Masters student in Computer Science at <a href='https://www.epfl.ch/en/'>EPFL</a>. My research interest broadly lie in Theoretical Computer Science, with a special focus on Complexity Theory and Graph Algorithms.
 
 Prior to this, I obtained my Bachelor of Technology in Computer Science and Engineering from <a href='https://iiitd.ac.in/'>IIIT-Delhi</a>. I have further benefited from doing projects and teaching alongside various professors of the amazing <a href='https://sites.google.com/iiitd.ac.in/theory-lab/'>IIIT-Delhi Theory Group</a>.
 
