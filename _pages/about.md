@@ -2,14 +2,13 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='https://www.epfl.ch/en/'>EPFL</a>, Grad student in Computer Science
+subtitle: Always tired
 
 profile:
   align: right
   image: DSCF0301.jpg
-  image_circular: false # crops the image to make it circular
+  image_circular: true # crops the image to make it circular
   more_info: >
-    <p>INJ 118, EPFL </p>
     <p>Lausanne, Vaud, Switzerland </p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
@@ -26,8 +25,8 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](https://www.reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+Hello there! I am a Masters student in <a href='https://www.epfl.ch/en/'>EPFL</a>, studying Computer Science. My research interest broadly lie in Theoretical Computer Science, with a special focus on Complexity Theory and Graph Algorithms.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+Prior to this, I obtained my Bachelor of Technology in Computer Science and Engineering from <a href='https://iiitd.ac.in/'>IIIT-Delhi</a>. I have further benefited from doing projects and teaching alongside various professors of the amazing <a href='https://sites.google.com/iiitd.ac.in/theory-lab/'>IIIT-Delhi Theory Group</a>.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+Apart from academics and research, you'll often find me cooking some obscure recipes I found on the internet or even arguing with strangers. Despite my best wishes, I am amazing at failing everything.
