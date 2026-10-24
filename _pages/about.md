@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Always tired
+subtitle: M.Sc. student in Computer Science at EPFL
 
 profile:
   align: right
@@ -11,7 +11,7 @@ profile:
   more_info: >
     <p>Lausanne, Vaud, Switzerland </p>
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
+selected_papers: false # the current bibliography still contains starter examples
 social: true # includes social icons at the bottom of the page
 
 announcements:
@@ -25,8 +25,20 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Hello there! I am a Masters student in Computer Science at <a href='https://www.epfl.ch/en/'>EPFL</a>. My research interest broadly lie in Theoretical Computer Science, with a special focus on Complexity Theory and Graph Algorithms.
+I am a Master's student in Computer Science at <a href="https://www.epfl.ch/en/">EPFL</a>. My research interests are in theoretical computer science, especially computational complexity and graph algorithms.
 
-Prior to this, I obtained my Bachelor of Technology in Computer Science and Engineering from <a href='https://iiitd.ac.in/'>IIIT-Delhi</a>. I have further benefited from doing projects and teaching alongside various professors of the amazing <a href='https://sites.google.com/iiitd.ac.in/theory-lab/'>IIIT-Delhi Theory Group</a>.
+## Education
 
-Apart from academics and research, you'll often find me cooking some obscure recipes I found on the internet or even arguing with strangers. Despite my best wishes, I am amazing at failing everything.
+**M.Sc. in Computer Science** — <a href="https://www.epfl.ch/en/">EPFL</a>, Lausanne, Switzerland
+
+**B.Tech. in Computer Science and Engineering** — <a href="https://iiitd.ac.in/">Indraprastha Institute of Information Technology Delhi</a>, India
+
+During my undergraduate studies, I worked on projects and teaching with the <a href="https://sites.google.com/iiitd.ac.in/theory-lab/">IIIT-Delhi Theory Group</a>.
+
+## Research
+
+My interests include computational complexity and graph algorithms. See my <a href="https://scholar.google.com/citations?hl=en&amp;user=oIyDRhAAAAAJ">Google Scholar profile</a> for publications.
+
+## Beyond research
+
+I enjoy trying unusual recipes and arguing about ideas. I also try to keep a sense of humor when things do not go to plan.

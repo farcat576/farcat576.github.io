@@ -71,33 +71,14 @@ test("navbar menu stays right-aligned on desktop pages", async ({ page }, testIn
   expect(Math.abs(alignment.menuRight - alignment.containerRight)).toBeLessThanOrEqual(24);
 });
 
-test("navbar search button opens modal and toggle buttons use pointer cursor", async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name === "mobile", "navbar search/theme controls are collapsed under mobile menu");
-
+test("navbar search is disabled and theme toggle uses pointer cursor", async ({ page }) => {
   await preparePage(page, "light");
   await page.goto("/al-folio/", { waitUntil: "networkidle" });
   await stabilizeVisuals(page);
 
-  await page.evaluate(() => {
-    const ninjaKeys = document.querySelector("ninja-keys");
-    if (!ninjaKeys || typeof ninjaKeys.open !== "function") {
-      return;
-    }
-    ninjaKeys.__openCalled = false;
-    const originalOpen = ninjaKeys.open.bind(ninjaKeys);
-    ninjaKeys.open = () => {
-      ninjaKeys.__openCalled = true;
-      return originalOpen();
-    };
-  });
-
-  await page.click("#search-toggle");
-  const modalOpened = await page.evaluate(() => Boolean(document.querySelector("ninja-keys")?.__openCalled));
-  expect(modalOpened).toBeTruthy();
-
-  const searchCursor = await page.locator("#search-toggle").evaluate((el) => window.getComputedStyle(el).cursor);
+  await expect(page.locator("#search-toggle")).toHaveCount(0);
+  await expect(page.locator("ninja-keys")).toHaveCount(0);
   const themeCursor = await page.locator("#light-toggle").evaluate((el) => window.getComputedStyle(el).cursor);
-  expect(searchCursor).toBe("pointer");
   expect(themeCursor).toBe("pointer");
 });
 
@@ -119,26 +100,6 @@ test("project cards hover with upward lift animation", async ({ page }, testInfo
   expect(before).not.toBeNull();
   expect(after).not.toBeNull();
   expect(after.y).toBeLessThan(before.y);
-});
-
-test("teaching calendar toggle has pointer cursor and toggles calendar visibility", async ({ page }) => {
-  await preparePage(page, "light");
-  await page.goto("/al-folio/teaching/", { waitUntil: "networkidle" });
-  await stabilizeVisuals(page);
-
-  const button = page.locator("#calendar-toggle-btn");
-  await expect(button).toBeVisible();
-
-  const buttonStyles = await button.evaluate((el) => {
-    const computed = window.getComputedStyle(el);
-    return { cursor: computed.cursor, fontSize: computed.fontSize };
-  });
-  expect(buttonStyles.cursor).toBe("pointer");
-  expect(Number.parseFloat(buttonStyles.fontSize)).toBeGreaterThan(12);
-
-  await button.click();
-  await expect(page.locator("#calendar-container")).toBeVisible();
-  await expect(button).toContainText("Hide Calendar");
 });
 
 test("core pages no longer emit jQuery-style runtime errors", async ({ page }) => {

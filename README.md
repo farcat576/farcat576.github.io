@@ -174,7 +174,7 @@ Everything below ships with the starter. Rows marked **setup** render nothing un
 | Math, TikZ diagrams                                                             | `al_math`                        | [the math post](https://alshedivat.github.io/al-folio/blog/2015/math/)              |
 | Charts, mermaid, plotly                                                         | `al_charts`                      | [the charts post](https://alshedivat.github.io/al-folio/blog/2025/plotly/)          |
 | Image zoom, galleries, sliders, lightbox                                        | `al_img_tools`                   | [the images post](https://alshedivat.github.io/al-folio/blog/2024/advanced-images/) |
-| Full-text search (<kbd>ctrl</kbd> <kbd>k</kbd>)                                 | `al_search`                      | `search_enabled` in [\_config.yml](_config.yml)                                     |
+| Full-text search (<kbd>ctrl</kbd> <kbd>k</kbd>)                                 | `al_search`                      | Disabled with `search_enabled: false` in [\_config.yml](_config.yml)                 |
 | Comments (Giscus or Disqus) — **setup**                                         | `al_comments`                    | `giscus:` in [\_config.yml](_config.yml)                                            |
 | Analytics — Google, Cronitor, Pirsch, Openpanel, Cloudflare, Simple — **setup** | `al_analytics`                   | [docs/ANALYTICS.md](docs/ANALYTICS.md)                                              |
 | GDPR cookie consent, gating analytics until opt-in — **setup**                  | `al_cookie`                      | [GDPR Cookie Consent Dialog](docs/CUSTOMIZE.md#gdpr-cookie-consent-dialog)          |
@@ -210,7 +210,7 @@ Publications are generated from your BibTeX bibliography and the CV from a singl
   <a href="https://alshedivat.github.io/al-folio/projects/"><img src="readme_preview/projects.png" width=400></a>
 </p>
 
-Projects are one of three Jekyll `collections` the starter ships (`news`, `projects`, `teachings`). The blog starts empty; add your own dated Markdown posts to `_posts/`. You can add other collections for courses, talks, or anything else — see [Adding Collections](docs/CUSTOMIZE.md#adding-collections).
+Projects are one of two Jekyll `collections` this site uses (`news` and `projects`). The blog starts empty; add your own dated Markdown posts to `_posts/`. You can add other collections for courses, talks, or anything else — see [Adding Collections](docs/CUSTOMIZE.md#adding-collections).
 
 ---
 
