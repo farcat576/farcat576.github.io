@@ -25,7 +25,7 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a Master's student in Computer Science at <a href="https://www.epfl.ch/en/">EPFL</a>. My research interests are in theoretical computer science, especially computational complexity and graph algorithms.
+I am a Master's student in Computer Science at <a href="https://www.epfl.ch/en/">EPFL</a>. I expect to graduate sometime in 2027.
 
 ## Education
 
