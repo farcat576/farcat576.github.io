@@ -29,10 +29,6 @@ const SHOTS = [
   { name: "publications", url: "/publications/", theme: "light", height: 1100 },
   { name: "projects", url: "/projects/", theme: "light", height: 1000 },
   { name: "blog", url: "/blog/", theme: "light", height: 1100 },
-  { name: "distill", url: "/blog/2021/distill/", theme: "light", height: 1100 },
-  { name: "math", url: "/blog/2015/math/", theme: "light", height: 1000, settle: 6000 },
-  { name: "code", url: "/blog/2015/code/", theme: "light", height: 1000 },
-  { name: "jupyter", url: "/blog/2023/jupyter-notebook/", theme: "light", height: 1000 },
   { name: "photos-screenshot", url: "/projects/1_project/", theme: "light", height: 1100, settle: 6000 },
 ];
 

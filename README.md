@@ -210,7 +210,7 @@ Publications are generated from your BibTeX bibliography and the CV from a singl
   <a href="https://alshedivat.github.io/al-folio/projects/"><img src="readme_preview/projects.png" width=400></a>
 </p>
 
-Projects are one of four Jekyll `collections` the starter ships (`news`, `projects`, `books`, `teachings`). You can add your own for courses, talks, or anything else — see [Adding Collections](docs/CUSTOMIZE.md#adding-collections).
+Projects are one of three Jekyll `collections` the starter ships (`news`, `projects`, `teachings`). The blog starts empty; add your own dated Markdown posts to `_posts/`. You can add other collections for courses, talks, or anything else — see [Adding Collections](docs/CUSTOMIZE.md#adding-collections).
 
 ---
 

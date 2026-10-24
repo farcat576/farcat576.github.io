@@ -22,7 +22,6 @@
     al_folio_min: "1.0.0"
     al_folio_max: "1.x"
   status: bundled
-  demo_path: /blog/2018/distill/
   maintainer_contact: https://github.com/al-org-dev
   notes: Distill layout/runtime ownership.
 
@@ -64,7 +63,6 @@
     al_folio_min: "1.0.0"
     al_folio_max: "1.2.x"
   status: bundled
-  demo_path: /blog/2023/tables/
   maintainer_contact: https://github.com/al-org-dev
   notes: Transitional compatibility for legacy Bootstrap-marked content.
 
@@ -120,7 +118,6 @@
     al_folio_min: "1.0.0"
     al_folio_max: "1.x"
   status: bundled
-  demo_path: /blog/2024/photo-gallery/
   maintainer_contact: https://github.com/al-org-dev
   notes: Image tooling, gallery, and lightbox behavior.
 
@@ -134,7 +131,6 @@
     al_folio_min: "1.0.0"
     al_folio_max: "1.x"
   status: bundled
-  demo_path: /blog/2023/tikzjax/
   maintainer_contact: https://github.com/al-org-dev
   notes: Math and TikZ runtime integration.
 
@@ -176,7 +172,6 @@
     al_folio_min: "1.0.0"
     al_folio_max: "1.x"
   status: bundled
-  demo_path: /blog/
   maintainer_contact: https://github.com/al-org-dev
   notes: External posts ingestion helpers.
 
@@ -190,7 +185,6 @@
     al_folio_min: "1.0.0"
     al_folio_max: "1.x"
   status: bundled
-  demo_path: /blog/2023/charts/
   maintainer_contact: https://github.com/al-org-dev
   notes: Chart runtime integrations.
 
@@ -204,7 +198,6 @@
     al_folio_min: "1.0.0"
     al_folio_max: "1.x"
   status: bundled
-  demo_path: /blog/
   maintainer_contact: https://github.com/al-org-dev
   notes: Comments providers and comment runtime glue.
 

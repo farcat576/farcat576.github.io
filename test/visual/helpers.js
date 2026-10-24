@@ -2,58 +2,10 @@ const { PNG } = require("pngjs");
 const pixelmatchModule = require("pixelmatch");
 const pixelmatch = pixelmatchModule.default || pixelmatchModule;
 
-// Slippy-map basemap tiles, requested by the Plotly figure embedded in the
-// distill post. Blocked because pixel-diffing a map whose artwork streams from
-// a third-party CDN is not reproducible: the two sides of a parity comparison
-// are fetched seconds apart and nothing guarantees they render the same tiles.
-//
-// The v0.16.3 baseline additionally requests a Stamen endpoint that was retired
-// and no longer serves, which is a plausible (though unconfirmed) contributor
-// to the intermittent `waitUntil: "networkidle"` timeouts seen on the baseline
-// distill page — a host that black-holes a connection keeps the request in
-// flight until Chromium gives up. Both basemaps are listed either way, so the
-// candidate and the baseline are stubbed symmetrically.
-const BLOCKED_DOMAINS = [
-  "google-analytics.com",
-  "plausible.io",
-  "badge.dimensions.ai",
-  "cartocdn.com",
-  "openstreetmap.org",
-  "stadiamaps.com",
-  "mapbox.com",
-];
-// Stamen sharded its tiles across stamen-tiles-{a,b,c,d}.a.ssl.fastly.net.
-// Matching the suffix would blocklist Fastly at large, so match the prefix.
-const BLOCKED_HOST_PREFIXES = ["stamen-tiles"];
-
-async function applyNetworkStubs(page) {
-  const matchesBlockedHost = (requestUrl) => {
-    try {
-      const hostname = new URL(requestUrl).hostname.toLowerCase();
-      return (
-        BLOCKED_DOMAINS.some((domain) => hostname === domain || hostname.endsWith(`.${domain}`)) ||
-        BLOCKED_HOST_PREFIXES.some((prefix) => hostname.startsWith(prefix))
-      );
-    } catch {
-      return false;
-    }
-  };
-
-  await page.route("**/*", (route) => {
-    const url = route.request().url();
-    if (matchesBlockedHost(url)) {
-      route.abort();
-      return;
-    }
-    route.continue();
-  });
-}
-
 async function preparePage(page, themeSetting = "light") {
   await page.addInitScript((setting) => {
     window.localStorage.setItem("theme", setting);
   }, themeSetting);
-  await applyNetworkStubs(page);
 }
 
 async function stabilizeVisuals(page) {
