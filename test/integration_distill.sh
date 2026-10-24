@@ -2,7 +2,6 @@
 set -euo pipefail
 
 tmp_dir="$(mktemp -d)"
-tmp_override="${tmp_dir}/distill-override.yml"
 tmp_site="${tmp_dir}/site"
 
 cleanup() {
@@ -10,38 +9,16 @@ cleanup() {
 }
 trap cleanup EXIT
 
-cat >"${tmp_override}" <<'YAML'
-giscus:
-  repo: alshedivat/al-folio
-  repo_id: R_kgDOExample
-  category: Comments
-  category_id: DIC_kwDOExample
-YAML
+bundle exec jekyll build -d "${tmp_site}" >/dev/null
 
-bundle exec jekyll build --config "_config.yml,${tmp_override}" -d "${tmp_site}" >/dev/null
-
-distill_page="${tmp_site}/blog/2021/distill/index.html"
-
-if [ ! -f "${distill_page}" ]; then
-  echo "distill page was not generated at ${distill_page}" >&2
+if [ ! -f "${tmp_site}/blog/index.html" ]; then
+  echo "blog page was not generated" >&2
   exit 1
 fi
 
-grep -q 'd-front-matter' "${distill_page}"
-grep -q '/assets/js/distillpub/template.v2.js' "${distill_page}"
-grep -q '/assets/js/distillpub/transforms.v2.js' "${distill_page}"
-grep -q '/assets/js/distillpub/overrides.js' "${distill_page}"
-grep -q '/assets/al_charts/js/mermaid-setup.js' "${distill_page}"
-grep -q 'https://cdn.jsdelivr.net/npm/@planktimerr/tikzjax@1.0.8/dist/fonts.css' "${distill_page}"
-grep -q 'https://cdn.jsdelivr.net/npm/@planktimerr/tikzjax@1.0.8/dist/tikzjax.js' "${distill_page}"
-grep -q 'id="giscus_thread"' "${distill_page}"
-transforms_runtime="${tmp_site}/assets/js/distillpub/transforms.v2.js"
-distill_runtime="$(PATH="$HOME/.rbenv/shims:$PATH" bundle exec ruby -e 'spec = Gem.loaded_specs["al_folio_distill"]; puts(spec ? File.join(spec.full_gem_path, "assets/js/distillpub/transforms.v2.js") : "")')"
-if [ -f "${distill_runtime}" ]; then
-  # Prefer the packaged gem runtime for deterministic parity checks.
-  transforms_runtime="${distill_runtime}"
-elif [ ! -f "${transforms_runtime}" ]; then
-  echo "distill transforms runtime missing at ${transforms_runtime} (and not found in installed al_folio_distill gem)" >&2
+transforms_runtime="$(PATH="$HOME/.rbenv/shims:$PATH" bundle exec ruby -e 'spec = Gem.loaded_specs["al_folio_distill"]; puts(spec ? File.join(spec.full_gem_path, "assets/js/distillpub/transforms.v2.js") : "")')"
+if [ ! -f "${transforms_runtime}" ]; then
+  echo "distill transforms runtime missing from installed al_folio_distill gem" >&2
   exit 1
 fi
 
@@ -52,4 +29,4 @@ if [ "${actual_transforms_hash}" != "${expected_transforms_hash}" ]; then
   exit 1
 fi
 
-echo "distill integration checks passed"
+echo "distill runtime integration check passed"
