@@ -86,7 +86,6 @@ Here we will give you some tips on how to customize the website. One important t
     - [Removing the news section](#removing-the-news-section)
     - [Removing the projects page](#removing-the-projects-page)
     - [Removing the publications page](#removing-the-publications-page)
-    - [Removing the repositories page](#removing-the-repositories-page)
     - [You can also remove pages through commenting out front-matter blocks](#you-can-also-remove-pages-through-commenting-out-front-matter-blocks)
   - [Adding Token for Lighthouse Badger](#adding-token-for-lighthouse-badger)
     - [Personal Access Token (fine-grained) Permissions for Lighthouse Badger:](#personal-access-token-fine-grained-permissions-for-lighthouse-badger)
@@ -123,7 +122,6 @@ The project is structured as follows, focusing on the main components that you w
 ├── 📄 _config.yml: the configuration file of the template
 ├── 📂 _data/: contains some of the data used in the template
 │   ├── 📄 cv.yml: CV in YAML format, used when assets/json/resume.json is not found
-│   ├── 📄 repositories.yml: users and repositories info in YAML format
 │   └── 📄 socials.yml: your social media and contact info in YAML format
 ├── 📂 _includes/: optional local override includes (default includes are gem-owned in `v1.x`)
 ├── 📂 _layouts/: optional local override layouts (default layouts are gem-owned in `v1.x`)
@@ -400,17 +398,6 @@ This will add a download button on your CV page that links to the PDF. (The exac
 
 Delete or comment out the [`.github/workflows/render-cv.yml`](../.github/workflows/render-cv.yml) workflow file.
 
-## Modifying the user and repository information
-
-The user and repository information is defined in [\_data/repositories.yml](../_data/repositories.yml). You can add as many users and repositories as you want. Both informations are used in the `repositories` section.
-
-### Configuring external service URLs
-
-The repository page uses external services to display GitHub statistics and trophies:
-
-- `github-stats-extended.vercel.app` for user stats and repository cards — **on by default**
-- `github-profile-trophy.vercel.app` for GitHub profile trophies — **off by default**
-
 ### Protecting email addresses from scrapers
 
 Set `protect_email: true` in `_config.yml` (default `false`, provided by the `al_email_protect` plugin):
@@ -444,50 +431,6 @@ unconditionally. For an address shown as text rather than a link, `{{ cv.email |
 `someone [at] example [dot] com`.
 
 See [al-org-dev/al-email-protect](https://github.com/al-org-dev/al-email-protect) for the full reference.
-
-### Why trophies are off by default
-
-The free public github-profile-trophy instance is currently disabled: its Vercel deployment answers `HTTP 402 / DEPLOYMENT_DISABLED`, so every trophy image fails to load. This is a hosting problem on the maintainer's side, **not** a paywall on the feature — [github-profile-trophy](https://github.com/ryo-ma/github-profile-trophy) is still open source and free to run yourself.
-
-To turn trophies back on, deploy your own instance (a free Vercel Hobby account is enough) and then:
-
-```yaml
-repo_trophies:
-  enabled: true
-
-external_services:
-  github_profile_trophy_url: https://your-instance.vercel.app
-```
-
-**Important:** All of these default services are hosted by third parties and may not be available 100% of the time — as the trophy outage shows. For better reliability, privacy, and customization, self-host them and point your site at your own instances.
-
-To use your own instances of these services, configure the URLs in [\_config.yml](../_config.yml):
-
-```yaml
-external_services:
-  github_readme_stats_url: https://github-stats-extended.vercel.app
-  github_profile_trophy_url: https://github-profile-trophy.vercel.app
-```
-
-To self-host these services, follow the deployment instructions in their respective repositories:
-
-- [github-stats-extended](https://github.com/stats-organization/github-stats-extended)
-- [github-profile-trophy](https://github.com/ryo-ma/github-profile-trophy)
-
-Once deployed, update the URLs above to point to your custom deployment.
-
-#### Migrating from github-readme-stats
-
-Earlier versions of al-folio defaulted to `github-readme-stats.vercel.app`. That public instance is no longer reliably available, which is why repository cards render blank on some sites. The default is now [github-stats-extended](https://github.com/stats-organization/github-stats-extended), an actively maintained, API-compatible successor.
-
-If your site was created before this change, your `_config.yml` still pins the old host. Update it by hand:
-
-```yaml
-external_services:
-  github_readme_stats_url: https://github-stats-extended.vercel.app
-```
-
-Only the domain changes — the endpoints and every query parameter al-folio sends (`theme`, `locale`, `show_owner`, `description_lines_count`, `show_icons`) are unchanged, so your cards keep the same appearance and your `repo_theme_light` / `repo_theme_dark` settings continue to work.
 
 ## Creating new pages
 
@@ -1360,13 +1303,6 @@ You can also:
 - the old `hide-custom-bibtex.rb` helper is now provided by `al_folio_core` (there is no local file to delete)
 - remove `al_citations` from the [Gemfile](../Gemfile) and from the `plugins` section in [\_config.yml](../_config.yml)
 - remove the `jekyll-scholar` gem from the [Gemfile](../Gemfile) and the `plugins` section in [\_config.yml](../_config.yml)
-
-### Removing the repositories page
-
-To remove the repositories, you can:
-
-- delete the repositories page [\_pages/repositories.md](../_pages/repositories.md)
-- in `v1.x`, repository rendering includes are gem-owned and not present as starter-local files to delete
 
 ### You can also remove pages through commenting out front-matter blocks
 

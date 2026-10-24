@@ -2,9 +2,6 @@ const { PNG } = require("pngjs");
 const pixelmatchModule = require("pixelmatch");
 const pixelmatch = pixelmatchModule.default || pixelmatchModule;
 
-const REPO_STATS_STUB_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="180" viewBox="0 0 400 180"><rect width="400" height="180" fill="#f3f4f6"/><rect x="8" y="8" width="384" height="164" rx="8" fill="#ffffff" stroke="#d1d5db"/><text x="20" y="42" font-size="20" font-family="Arial, sans-serif" fill="#111827">Repository Stats (stub)</text><text x="20" y="76" font-size="14" font-family="Arial, sans-serif" fill="#6b7280">Deterministic fixture for visual parity</text></svg>`;
-const REPO_TROPHY_STUB_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="180" viewBox="0 0 400 180"><rect width="400" height="180" fill="#111827"/><rect x="8" y="8" width="384" height="164" rx="8" fill="#1f2937" stroke="#374151"/><text x="20" y="42" font-size="20" font-family="Arial, sans-serif" fill="#f9fafb">Repository Trophies (stub)</text><text x="20" y="76" font-size="14" font-family="Arial, sans-serif" fill="#d1d5db">Deterministic fixture for visual parity</text></svg>`;
-
 // Slippy-map basemap tiles, requested by the Plotly figure embedded in the
 // distill post. Blocked because pixel-diffing a map whose artwork streams from
 // a third-party CDN is not reproducible: the two sides of a parity comparison
@@ -44,22 +41,6 @@ async function applyNetworkStubs(page) {
 
   await page.route("**/*", (route) => {
     const url = route.request().url();
-    if (url.includes("github-stats-extended.vercel.app") || url.includes("github-readme-stats.vercel.app")) {
-      route.fulfill({
-        status: 200,
-        contentType: "image/svg+xml",
-        body: REPO_STATS_STUB_SVG,
-      });
-      return;
-    }
-    if (url.includes("github-profile-trophy.vercel.app")) {
-      route.fulfill({
-        status: 200,
-        contentType: "image/svg+xml",
-        body: REPO_TROPHY_STUB_SVG,
-      });
-      return;
-    }
     if (matchesBlockedHost(url)) {
       route.abort();
       return;
