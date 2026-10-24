@@ -24,7 +24,7 @@ This is the **authoritative** description of how the `al-folio` v1 starter and i
 `al-folio` v1.x is a **thin Jekyll starter, not a theme**. This repo owns only:
 
 - starter wiring (`Gemfile`, `_config.yml`, `_data/featured_plugins.yml`),
-- example content (`_pages`, `_posts`, `_projects`, `_news`, `_teachings`, `_books`, `_bibliography`),
+- example content (`_pages`, `_posts`, `_projects`, `_news`, `_teachings`, `_bibliography`),
 - documentation (`docs/`),
 - cross-gem integration tests (`test/integration_*.sh`) and visual parity tests (`test/visual/`).
 

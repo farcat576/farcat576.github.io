@@ -149,7 +149,7 @@ To enhance GitHub Copilot's effectiveness when working with specific file types,
 - **`.github/instructions/liquid-templates.instructions.md`** – Guidance for modifying Liquid template files (`.liquid`)
 - **`.github/instructions/yaml-configuration.instructions.md`** – Guidance for configuration and data files (`_config.yml`, `_data/**/*.yml`)
 - **`.github/instructions/bibtex-bibliography.instructions.md`** – Guidance for bibliography files (`.bib`, `_bibliography/**`)
-- **`.github/instructions/markdown-content.instructions.md`** – Guidance for content files across collections (`_books/`, `_news/`, `_pages/`, `_posts/`, `_projects/`, `_teachings/`)
+- **`.github/instructions/markdown-content.instructions.md`** – Guidance for content files across collections (`_news/`, `_pages/`, `_posts/`, `_projects/`, `_teachings/`)
 - **`.github/instructions/javascript-scripts.instructions.md`** – Guidance for starter JavaScript and runtime script snippets
 
 These files help Copilot agents understand project conventions, build requirements, and development workflows without requiring codebase exploration.

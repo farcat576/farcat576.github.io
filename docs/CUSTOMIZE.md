@@ -41,11 +41,6 @@ Here we will give you some tips on how to customize the website. One important t
       - [Required fields](#required-fields)
       - [Optional fields](#optional-fields)
     - [Collections with categories and tags](#collections-with-categories-and-tags)
-    - [Creating custom metadata groups and archive pages](#creating-custom-metadata-groups-and-archive-pages)
-      - [Understanding Jekyll's special handling of fields](#understanding-jekylls-special-handling-of-fields)
-      - [Example: Adding a custom "adaptations" field](#example-adding-a-custom-adaptations-field)
-      - [Field naming best practices](#field-naming-best-practices)
-      - [Complete example: Book reviews with custom adaptations field](#complete-example-book-reviews-with-custom-adaptations-field)
   - [Adding a new publication](#adding-a-new-publication)
     - [Author annotation](#author-annotation)
     - [Buttons (through custom bibtex keywords)](#buttons-through-custom-bibtex-keywords)
@@ -114,7 +109,6 @@ The project is structured as follows, focusing on the main components that you w
     │   └── 📄 resume.json: CV in JSON format (https://jsonresume.org/)
 ├── 📂 _bibliography/
 │   └── 📄 papers.bib: bibliography in BibTeX format
-├── 📂 _books/: contains the bookshelf pages
 ├── 📄 _config.yml: the configuration file of the template
 ├── 📂 _data/: contains some of the data used in the template
 │   ├── 📄 cv.yml: CV in YAML format, used when assets/json/resume.json is not found
@@ -459,7 +453,7 @@ You can add news in the about page by adding new Markdown files in the [\_news](
 
 ## Adding Collections
 
-al-folio uses Jekyll [collections](https://jekyllrb.com/docs/collections/) to let you break up your work into categories. The starter comes with four default collections, all declared under `collections:` in [\_config.yml](../_config.yml): `news`, `projects`, `books`, and `teachings`. Items from the `news` collection are automatically displayed on the home page, items from the `projects` collection are displayed on a responsive grid on the projects page, items from the `books` collection are displayed on its own `bookshelf` page inside `submenus`, and items from the `teachings` collection are displayed as course pages (see [Creating a teachings collection](#creating-a-teachings-collection) below).
+al-folio uses Jekyll [collections](https://jekyllrb.com/docs/collections/) to let you break up your work into categories. The starter comes with three default collections, all declared under `collections:` in [\_config.yml](../_config.yml): `news`, `projects`, and `teachings`. Items from the `news` collection are automatically displayed on the home page, items from the `projects` collection are displayed on a responsive grid on the projects page, and items from the `teachings` collection are displayed as course pages (see [Creating a teachings collection](#creating-a-teachings-collection) below).
 
 You can easily create your own collections for any type of content—teaching materials, courses, apps, short stories, or whatever suits your needs.
 
@@ -501,7 +495,7 @@ To create a new collection, follow these steps. We will create a `courses` colle
 
 3. **Create a landing page for your collection**
 
-   Add a Markdown file in `_pages/` (e.g., `courses.md`) that will serve as the main page for your collection. You can use [\_pages/projects.md](../_pages/projects.md) or [\_pages/books.md](../_pages/books.md) as a template and adapt it for your needs.
+   Add a Markdown file in `_pages/` (e.g., `courses.md`) that will serve as the main page for your collection. You can use [\_pages/projects.md](../_pages/projects.md) as a template and adapt it for your needs.
 
    In your landing page, access your collection using the `site.COLLECTION_NAME` variable:
 
@@ -516,7 +510,7 @@ To create a new collection, follow these steps. We will create a `courses` colle
 
 4. **Add a navigation link to your collection page**
 
-   Update [\_pages/dropdown.md](../_pages/dropdown.md) or the navigation configuration of your page. In the frontmatter of your collection landing page (e.g., `_pages/courses.md`), add:
+   In the frontmatter of your collection landing page (e.g., `_pages/courses.md`), add:
 
    ```yaml
    nav: true
@@ -618,151 +612,7 @@ Additional course content, information, or resources can be added here as markdo
 
 ### Collections with categories and tags
 
-If you want to add category and tag support (like the blog posts have), you need to configure the `jekyll-archives` section in [\_config.yml](../_config.yml). See how this is done with the `books` collection for reference. For more details, check the [jekyll-archives-v2 documentation](https://george-gca.github.io/jekyll-archives-v2/).
-
-### Creating custom metadata groups and archive pages
-
-Beyond the built-in `categories` and `tags` fields, you can create custom metadata fields for your collections to organize content in new ways. For example, if you have a book review collection, you might want to organize books by their **adaptations** (movies, TV shows, video games, etc.).
-
-#### Understanding Jekyll's special handling of fields
-
-Jekyll has **special built-in support** for only two fields:
-
-- **`categories`** – Automatically splits space-separated values into arrays
-- **`tags`** – Automatically splits space-separated values into arrays
-
-Custom fields (any field name you create) remain as **strings** and require explicit handling in your Liquid templates.
-
-#### Example: Adding a custom "adaptations" field
-
-1. **Add the field to your collection frontmatter**
-
-   In your collection item (e.g., `_books/the_godfather.md`):
-
-   ```yaml
-   ---
-   layout: book-review
-   title: The Godfather
-   author: Mario Puzo
-   categories: classics crime historical-fiction
-   adaptations: movie TV-series video-game novel-adaptation
-   ---
-   ```
-
-2. **Handle the custom field in your layout template**
-
-   In your layout file (e.g., `_layouts/book-review.liquid`), custom fields must be **split** into arrays before you can loop over them:
-
-   ```liquid
-   {% if page.adaptations %}
-     {% assign page_adaptations = page.adaptations | split: ' ' %}
-     {% for adaptation in page_adaptations %}
-       <a href="{{ adaptation | slugify | prepend: '/books/adaptation/' | relative_url }}">
-         <i class="fa-solid fa-film fa-sm"></i> {{ adaptation }}
-       </a>
-     {% endfor %}
-   {% endif %}
-   ```
-
-   **Why the `split: ' '` filter?** Because `adaptations` is a custom field, Jekyll doesn't automatically convert it to an array like it does for `categories` and `tags`. The `split: ' '` filter breaks the space-separated string into individual items.
-
-3. **Enable archive pages for your custom field**
-
-   Add your custom field to the `jekyll-archives` configuration in [\_config.yml](../_config.yml):
-
-   ```yaml
-   jekyll-archives:
-     posts:
-       enabled:
-         - year
-         - tags
-         - categories
-     books:
-       enabled:
-         - year
-         - tags
-         - categories
-         - adaptations # Add your custom field here
-       permalinks:
-         year: "/:collection/:year/"
-         tags: "/:collection/:type/:name/"
-         categories: "/:collection/:type/:name/"
-         adaptations: "/:collection/:type/:name/" # Add permalink pattern here
-   ```
-
-4. **Test your archive pages**
-
-   After configuration, rebuild your site:
-
-   ```bash
-   docker compose down
-   docker compose up
-   ```
-
-   Your archive pages will be generated at:
-   - `/books/adaptations/movie/`
-   - `/books/adaptations/tv-series/` (slugified from `TV-series`)
-   - `/books/adaptations/video-game/` (slugified from `video-game`)
-
-   Each page will automatically display all items with that adaptation value.
-
-#### Field naming best practices
-
-- Use **lowercase** words separated by **hyphens** for multi-word values: `live-action`, `video-game`, `TV-series`
-- Choose **meaningful names** that describe the grouping: `genres`, `adaptations`, `media-types`, `settings`, etc.
-- Keep field values **short and consistent** across all items in your collection
-- Document custom fields in a README or comments for other contributors to understand
-
-#### Complete example: Book reviews with custom adaptations field
-
-**File: `_books/the_godfather.md`**
-
-```yaml
----
-layout: book-review
-title: The Godfather
-author: Mario Puzo
-categories: classics crime historical-fiction
-tags: top-100
-adaptations: movie TV-series video-game
----
-```
-
-**File: `_layouts/book-review.liquid` (partial)**
-
-```liquid
-{% if page.adaptations %}
-  <div class="adaptations">
-    <strong>Adaptations:</strong>
-    {% assign page_adaptations = page.adaptations | split: ' ' %}
-    {% for adaptation in page_adaptations %}
-      <a href="{{ adaptation | slugify | prepend: '/books/adaptation/' | relative_url }}">
-        {{ adaptation }}
-      </a>
-      {% unless forloop.last %},{% endunless %}
-    {% endfor %}
-  </div>
-{% endif %}
-```
-
-**File: `_config.yml` (jekyll-archives section)**
-
-```yaml
-jekyll-archives:
-  books:
-    enabled:
-      - year
-      - categories
-      - tags
-      - adaptations
-    permalinks:
-      year: "/:collection/:year/"
-      categories: "/:collection/:type/:name/"
-      tags: "/:collection/:type/:name/"
-      adaptations: "/:collection/:type/:name/"
-```
-
-After rebuilding, users can browse books by adaptation at `/books/adaptations/movie/`, etc.
+If you want to add category and tag archive pages, configure the `jekyll-archives` section in [\_config.yml](../_config.yml). For more details, check the [jekyll-archives-v2 documentation](https://george-gca.github.io/jekyll-archives-v2/).
 
 ## Adding a new publication
 
@@ -1250,7 +1100,7 @@ To remove the blog, you have to:
 
 - delete [\_posts](../_posts/) directory
 - delete blog page [\_pages/blog.md](../_pages/blog.md)
-- remove reference to blog page in our [\_pages/dropdown.md](../_pages/dropdown.md)
+- set `nav: false` in the front matter of [\_pages/blog.md](../_pages/blog.md)
 - remove the `latest_posts` part in [\_pages/about.md](../_pages/about.md)
 - remove the `Blog` section in the [\_config.yml](../_config.yml) file and the related parts, like the `jekyll-archives`
 
@@ -1277,7 +1127,7 @@ To remove the projects, you can:
 
 - delete the [\_projects](../_projects/) directory
 - delete the projects page [\_pages/projects.md](../_pages/projects.md)
-- remove reference to projects page in our [\_pages/dropdown.md](../_pages/dropdown.md)
+- set `nav: false` in the front matter of [\_pages/projects.md](../_pages/projects.md)
 - remove projects part in the `Collections` section in the [\_config.yml](../_config.yml) file
 
 You can also:
@@ -1290,7 +1140,7 @@ To remove the publications, you can:
 
 - delete the [\_bibliography](../_bibliography/) directory
 - delete the publications page [\_pages/publications.md](../_pages/publications.md)
-- remove reference to publications page in our [\_pages/dropdown.md](../_pages/dropdown.md)
+- set `nav: false` in the front matter of [\_pages/publications.md](../_pages/publications.md)
 - remove `Jekyll Scholar` section in the [\_config.yml](../_config.yml) file
 
 You can also:
@@ -1304,22 +1154,14 @@ You can also:
 
 For `.md` files in [\_pages](../_pages/) directory, if you do not want to completely edit or delete them but save for later use, you can temporarily disable these variables. But be aware that Jekyll only recognizes front matter when it appears as uncommented. The layout, permalink, and other front-matter behavior are disabled for that file.
 
-For example, books.md do:
+For example, to temporarily disable a page, wrap its front matter in HTML comments:
 
 ```md
 <!-- ---
-layout: book-shelf
-title: bookshelf
-permalink: /books/
-nav: true
-collection: books
+layout: page
+title: example
+permalink: /example/
 --- -->
-
-> What an astonishing thing a book is. It's a flat object made from a tree with flexible parts on which are imprinted lots of funny dark squiggles. But one glance at it and you're inside the mind of another person, maybe somebody dead for thousands of years. Across the millennia, an author is speaking clearly and silently inside your head, directly to you. Writing is perhaps the greatest of human inventions, binding together people who never knew each other, citizens of distant epochs. Books break the shackles of time. A book is proof that humans are capable of working magic.
->
-> -- Carl Sagan, Cosmos, Part 11: The Persistence of Memory (1980)
-
-## Books that I am reading, have read, or will read
 ```
 
 ## Adding Token for Lighthouse Badger

@@ -1,6 +1,6 @@
 # Markdown Content Instructions (v1.x)
 
-Scope: `_pages/**`, `_posts/**`, `_projects/**`, `_news/**`, `_teachings/**`, `_books/**`
+Scope: `_pages/**`, `_posts/**`, `_projects/**`, `_news/**`, `_teachings/**`
 
 ## Guidance
 
