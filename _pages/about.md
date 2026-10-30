@@ -25,7 +25,7 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a Master's student in Computer Science at <a href="https://www.epfl.ch/en/">EPFL</a>. I expect to graduate sometime in 2027.
+I am a Master's student in Computer Science at <a href="https://www.epfl.ch/en/">EPFL</a>. I expect to graduate sometime in early 2028.
 
 ## Education
 
